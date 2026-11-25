@@ -103,8 +103,34 @@ all of `$HOME`.
 
 ## Keybindings
 
-The commands are on `M-x` after the system loads, and `init.lisp` binds the
-`C-c h` prefix to `*consult-keymap*`:
+`init.lisp` makes the commands usable without `M-x`.  Three bindings replace a
+Lem command that does the same job with a smaller list; the rest were unbound.
+`C-x b` is deliberately left alone: Lem's `SELECT-BUFFER` also creates a
+missing buffer, while the richer buffer/file/bookmark list is on `C-x C-b`.
+
+| Key | Command | Replaces |
+| --- | --- | --- |
+| `C-x C-b` | `consult-buffer` | `select-buffer` |
+| `C-x C-h` | `consult-recent-file` | `find-recent-file` |
+| `M-g` | `consult-goto-line` | `goto-line` |
+| `M-s l` | `consult-line` | — |
+| `M-s L` | `consult-line-multi` | — |
+| `M-s g` | `consult-grep` | — |
+| `M-s r` | `consult-ripgrep` | — |
+| `M-s f` | `consult-find` | — |
+| `M-s F` | `consult-fd` | — |
+| `M-s i` | `consult-imenu` | — |
+| `M-s I` | `consult-imenu-multi` | — |
+| `M-s o` | `consult-outline` | — |
+| `M-s O` | `consult-org-heading` | — |
+| `M-s y` | `consult-yank-from-kill-ring` | — |
+| `M-s h` | `consult-history` | — |
+| `M-s c` | `consult-mode-command` | — |
+| `M-s m` | `consult-minor-mode-menu` | — |
+| `C-x p b` | `consult-project-buffer` | — |
+
+`C-c h` is the full prefix for every command, including the ones without a
+direct binding (`C-c h p` project buffer, `C-c h m` bookmark, `C-c h t` theme):
 
 | Key | Command |
 | --- | --- |
